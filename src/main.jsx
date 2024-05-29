@@ -7,14 +7,17 @@ import './index.css'
 import * as Sentry from "@sentry/react";
 
 Sentry.init({
-  dsn: "https://f625d02478c0b2d760302ca286fb313e@o4507330102099968.ingest.us.sentry.io/4507330104786944",
+  dsn: "https://d674932a77e6d9b9ced1190d70fd4691@o4506876178464768.ingest.us.sentry.io/4506876181151744",
   integrations: [
     Sentry.browserTracingIntegration(),
-    Sentry.metrics.metricsAggregatorIntegation(),
+    // Sentry.metrics.metricsAggregatorIntegration(),
     Sentry.reactRouterV6BrowserTracingIntegration({
-      useEffect: React.useEffect(),
+      useEffect: React.useEffect,
     }),
-    Sentry.replayIntegration(),
+    Sentry.replayIntegration({
+      maskAllText: false,
+      blockAllMedia: false,
+    }),
   ],
   tracesSampleRate: 1.0,
   tracePropagationTargets: ["localhost", /^https:\/\/yourserver\.io\/api/],
